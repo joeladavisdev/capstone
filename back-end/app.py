@@ -54,6 +54,18 @@ codeChallenge_schema = CodeChallengeSchema(many=True)
 def hello():
     return "Hello, World!"
 
+@app.route("/tough_question", methods=["POST"])
+def add_tough_question():
+  question = request.json["question"]
+
+  new_question = ToughQuestion(question)
+
+  db.session.add(new_question)
+  db.session.commit()
+
+  question = ToughQuestion.query.get(new_question.id)
+  return tough_question_schema.jsonify(question)
+
 if __name__ == "__main__":
     app.debug = True
     app.run()
