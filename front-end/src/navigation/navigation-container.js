@@ -13,7 +13,7 @@ class NavigationContainer extends Component {
                         <NavLink to="./code-challenges">Code Challenges</NavLink>
                     </li>
                     <li>
-                        <NavLink to="./tough-questions">Tough Questions</NavLink>
+                        <NavLink to="./tough-questions-page">Tough Questions</NavLink>
                     </li>
                     <li>
                         <NavLink to="./appearance-tips">Appearance Tips</NavLink>
