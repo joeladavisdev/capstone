@@ -18,6 +18,14 @@ class ToughQuestion extends Component {
     }
     onSubmit = (event) => {
         event.preventDefault();
+        fetch('http://localhost:5000/tough_question',
+        {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({
+                question: this.state.enterQuestion
+            })
+        })
         this.setState({
             question: this.state.enterQuestion,
             enterQuestion: ""
