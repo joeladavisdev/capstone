@@ -1,12 +1,13 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
+from flask_cors import CORS
 import os
 
 app = Flask(__name__)
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
-
+CORS(app)
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(basedir, "app.sqlite")
@@ -56,15 +57,22 @@ def hello():
 
 @app.route("/tough_question", methods=["POST"])
 def add_tough_question():
-  question = request.json["question"]
+    question = request.json["question"]
+    print("blah")
+    new_question = ToughQuestion(question)
 
-  new_question = ToughQuestion(question)
+    db.session.add(new_question)
+    db.session.commit()
 
-  db.session.add(new_question)
-  db.session.commit()
+    question = ToughQuestion.query.get(new_question.id)
+    return toughQuestion_schema.jsonify(question)
 
-  question = ToughQuestion.query.get(new_question.id)
-  return tough_question_schema.jsonify(question)
+@app.route("/tough_question", methods=["GET"])
+def get_questions():
+    # import pdb; pdb.set_trace()
+    questions = ToughQuestion.query.all()
+    return toughQuestion_schema.jsonify(questions, many=True)
+
 
 if __name__ == "__main__":
     app.debug = True
