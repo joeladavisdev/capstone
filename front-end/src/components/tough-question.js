@@ -33,7 +33,7 @@ class ToughQuestion extends Component {
     }
     render() {
         return (
-            <div>
+            <div className='tough-question-form-wrapper'>
                 <p>Question:</p>
                 <form onSubmit = {this.onSubmit} >
                     <input
