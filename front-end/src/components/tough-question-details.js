@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 class ToughQuestionDetails extends Component {
     render() {
         return (
-            <div>
+            <div className="details-wrapper">
                 
                 <h1>{this.props.toughQuestionData.question}</h1>
                 <h3>{this.props.toughQuestionData.answer}</h3>

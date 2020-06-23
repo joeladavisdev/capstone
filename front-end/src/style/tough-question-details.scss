@@ -1,0 +1,20 @@
+.details-wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: #BBE0FD;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .75em;
+    width: 300px;
+    color: #416085;
+    margin: 15px;
+    padding: 15px;
+
+    button {
+        background-color: #1E9CFB;
+        color: white;
+        width: 70px;
+        height: 25px;
+        margin: 5px;
+
+    }
+}
