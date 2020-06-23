@@ -50,16 +50,16 @@ class ToughQuestionsPage extends Component {
 
     render() {
         return (
-            <div>
+            <div className= "tough-question-page-form-wrapper">
+                <h1>Tough Questions</h1>
                 {
                     this.state.showToughQuestionForm ? (
                         <ToughQuestionForm handleSuccessfulToughQuestionSubmit={this.handleSuccessfulToughQuestionSubmit}/>
                     ) : ( 
-                        <div>
-                            <button onClick={this.handleShowToughQuestionForm}>Add new Question</button>
+                        <div className= "tough-question-add-button">
+                            <button onClick={this.handleShowToughQuestionForm}>+</button>
 
                             <div className="tough-question-page-form-wrapper">
-                                <h1>Tough Questions</h1>
                                 {this.renderToughQuestions()}
                             </div>
                         </div>

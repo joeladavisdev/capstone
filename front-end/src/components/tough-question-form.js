@@ -16,7 +16,7 @@ class ToughQuestionForm extends Component {
     handleChange = (event) => {
         event.preventDefault()
         this.setState({
-            [e.target.name]: event.target.value
+            [event.target.name]: event.target.value
         })
     }
 
@@ -39,22 +39,22 @@ class ToughQuestionForm extends Component {
 
     render() {
         return (
-            <div className="details-wrapper">
+            <div className="form-wrapper">
                 <h1>Enter a tough question and your answer:</h1>
                 <form onSubmit = {this.onSubmit} >
                     <input
-                    name="question"
-                    type='text'
-                    placeholder= 'Question'
-                    onChange={this.handleChange}
-                    value={this.state.question}
+                        name="question"
+                        type='text'
+                        placeholder= 'Question'
+                        onChange={this.handleChange}
+                        value={this.state.question}
                     />
                     <input
-                    name="answer"
-                    type='text'
-                    placeholder= 'Your Answer'
-                    onChange={this.handleChange}
-                    value={this.state.answer}
+                        name="answer"
+                        type='text'
+                        placeholder= 'Your Answer'
+                        onChange={this.handleChange}
+                        value={this.state.answer}
                     />
                     <div>
                         <button type='submit'>Submit</button>
@@ -62,10 +62,6 @@ class ToughQuestionForm extends Component {
                     </div>
                     
                 </form>
-                <div>
-                {this.state.question}
-                {this.state.answer}
-                </div>
                 
             </div>
         )

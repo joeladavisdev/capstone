@@ -1,0 +1,32 @@
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #BBE0FD;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .65em;
+    width: 300px;
+    color: #416085;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 4px;
+
+    button {
+        background-color: #1E9CFB;
+        color: white;
+        width: 70px;
+        height: 25px;
+        margin: 5px;
+        border-radius: 4px;
+    }
+
+    input {
+        display: flex;
+        flex-direction: column;
+        width: 275px;
+        height: 25px;
+        margin: 10px;
+
+    }
+}
