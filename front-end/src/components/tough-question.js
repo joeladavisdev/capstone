@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 
+
 class ToughQuestion extends Component {
     constructor() {
         super();
@@ -42,12 +43,16 @@ class ToughQuestion extends Component {
                     onChange={this.handleChange}
                     value={this.state.enterQuestion}
                     />
-                <button type='submit'>Submit</button>
-                <button type='delete'>Delete</button>
+                <div>
+                    <button type='submit'>Submit</button>
+                    <button type='delete'>Delete</button>
+                </div>
+                    
                 </form>
                 <div>
                 {this.state.question}
                 </div>
+                
             </div>
         )
     }
