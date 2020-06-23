@@ -6,8 +6,8 @@ class ToughQuestionDetails extends Component {
         return (
             <div>
                 
-                <h1>Tough Question goes here</h1>
-                <h3>your answer goes here</h3>
+                <h1>{this.props.toughQuestionData.question}</h1>
+                <h3>{this.props.toughQuestionData.answer}</h3>
                 <div>
                     <button>EDIT</button>
                     <button>DELETE</button>

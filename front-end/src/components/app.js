@@ -16,7 +16,7 @@ export default function App() {
   
   return (
     <Router>
-    <NavigationContainer />
+      <NavigationContainer />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/code-challenges" component={CodeChallenges} />
@@ -24,8 +24,6 @@ export default function App() {
         <Route path="/appearance-tips" component={AppearanceTips} />
         <Route path="/prospective-companies" component={ProspectiveCompanies} />
       </Switch>
-      
-
     </Router>
     
   );

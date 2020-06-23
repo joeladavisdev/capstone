@@ -28,14 +28,16 @@ class CodeChallenge(db.Model):
 class ToughQuestion(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     question = db.Column(db.String(420), nullable=False)
+    answer = db.Column(db.String(420), nullable=False)
 
-    def __init__(self, question):
+    def __init__(self, question, answer):
         self.question = question
+        self.answer = answer
 
 
 class ToughQuestionSchema(ma.Schema):
   class Meta:
-    fields = ("id", "question")
+    fields = ("id", "question", "answer")
 
 
 toughQuestion_schema = ToughQuestionSchema()
@@ -53,25 +55,41 @@ codeChallenge_schema = CodeChallengeSchema(many=True)
 
 @app.route("/")
 def hello():
-    return "Hello, World!"
+    return "InnerView Back-end"
+
 
 @app.route("/tough_question", methods=["POST"])
 def add_tough_question():
     question = request.json["question"]
-    print("blah")
-    new_question = ToughQuestion(question)
+    answer = request.json["answer"]
+    new_tough_question = ToughQuestion(question, answer)
 
-    db.session.add(new_question)
+    db.session.add(new_tough_question)
     db.session.commit()
 
-    question = ToughQuestion.query.get(new_question.id)
-    return toughQuestion_schema.jsonify(question)
+    # question = ToughQuestion.query.get(new_question.id)
 
-@app.route("/tough_question", methods=["GET"])
-def get_questions():
-    # import pdb; pdb.set_trace()
-    questions = ToughQuestion.query.all()
-    return toughQuestion_schema.jsonify(questions, many=True)
+
+    return jsonify(toughQuestion_schema.dump(new_tough_question))
+    
+
+@app.route("/tough_questions", methods=["GET"])
+def get_question():
+    all_questions = ToughQuestion.query.all()
+    print(all_questions)
+    return jsonify(toughQuestions_schema.dump(all_questions))
+
+
+# *****NOT WORKING******
+# @app.route("/tough_question", methods=["DELETE"])
+# def delete_question():
+#     question = ToughQuestion.query.get(new_question.id)
+
+#     db.session.delete(new_question)
+#     db.session.commit()
+
+#     return toughQuestion_schema.jsonify(question)
+
 
 
 if __name__ == "__main__":
