@@ -60,8 +60,9 @@ def hello():
 
 @app.route("/tough_question", methods=["POST"])
 def add_tough_question():
-    question = request.json["question"]
-    answer = request.json["answer"]
+    post_data = request.get_json()
+    question = post_data.get('question')
+    answer = post_data.get('answer')
     new_tough_question = ToughQuestion(question, answer)
 
     db.session.add(new_tough_question)
