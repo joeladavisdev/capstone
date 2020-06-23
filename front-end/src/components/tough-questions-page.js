@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import ToughQuestionDetails from "./tough-question-details";
+import ToughQuestionForm from "./tough-question-form";
 
 class ToughQuestionsPage extends Component {
     constructor() {
         super() 
 
         this.state= {
-            toughQuestions: []
+            toughQuestions: [],
+            showToughQuestionForm: false
         }
     }
 
@@ -26,6 +28,19 @@ class ToughQuestionsPage extends Component {
         })
     }
 
+    handleSuccessfulToughQuestionSubmit = (newQuestion) => {
+        this.setState((prevState) => ({
+            showToughQuestionForm: !prevState.showToughQuestionForm,
+            toughQuestions: [newQuestion, ...prevState.toughQuestions]
+        }))
+    }
+    
+    handleShowToughQuestionForm = () => {
+        this.setState({
+            showToughQuestionForm: !this.state.showToughQuestionForm
+        })
+    }
+
     renderToughQuestions = () => {
         return this.state.toughQuestions.map((toughQuestion) => {
             console.log(toughQuestion)
@@ -35,9 +50,22 @@ class ToughQuestionsPage extends Component {
 
     render() {
         return (
-            <div className="tough-question-page-form-wrapper">
-                <h1>Tough Questions</h1>
-                {this.renderToughQuestions()}
+            <div>
+                {
+                    this.state.showToughQuestionForm ? (
+                        <ToughQuestionForm handleSuccessfulToughQuestionSubmit={this.handleSuccessfulToughQuestionSubmit}/>
+                    ) : ( 
+                        <div>
+                            <button onClick={this.handleShowToughQuestionForm}>Add new Question</button>
+
+                            <div className="tough-question-page-form-wrapper">
+                                <h1>Tough Questions</h1>
+                                {this.renderToughQuestions()}
+                            </div>
+                        </div>
+                    )
+                }
+
             </div>
         )
     }

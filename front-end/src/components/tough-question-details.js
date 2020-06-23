@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 class ToughQuestionDetails extends Component {
+ 
     render() {
         return (
             <div className="details-wrapper">
@@ -9,8 +10,8 @@ class ToughQuestionDetails extends Component {
                 <h1>{this.props.toughQuestionData.question}</h1>
                 <h3>{this.props.toughQuestionData.answer}</h3>
                 <div>
-                    <button>EDIT</button>
-                    <button>DELETE</button>
+                    <button>Edit</button>
+                    <button>Delete</button>
                 </div>
 
             </div>
