@@ -48,6 +48,7 @@ class ToughQuestionForm extends Component {
                         placeholder= 'Question'
                         onChange={this.handleChange}
                         value={this.state.question}
+                        required
                     />
                     <input
                         name="answer"
@@ -55,6 +56,7 @@ class ToughQuestionForm extends Component {
                         placeholder= 'Your Answer'
                         onChange={this.handleChange}
                         value={this.state.answer}
+                        required
                     />
                     <div>
                         <button type='submit'>Submit</button>

@@ -54,7 +54,8 @@ class ToughQuestionsPage extends Component {
     renderToughQuestions = () => {
         return this.state.toughQuestions.map((toughQuestion) => {
             console.log(toughQuestion)
-            return <ToughQuestionDetails key={toughQuestion.id} toughQuestionData={toughQuestion} handleSuccessfulToughQuestionDelete={this.handleSuccessfulToughQuestionDelete}/>
+            return <ToughQuestionDetails key={toughQuestion.id} toughQuestionData={toughQuestion}
+            handleSuccessfulToughQuestionDelete={this.handleSuccessfulToughQuestionDelete}/>
         })
     }
 
@@ -64,7 +65,8 @@ class ToughQuestionsPage extends Component {
                 <h1>Tough Questions</h1>
                 {
                     this.state.showToughQuestionForm ? (
-                        <ToughQuestionForm handleSuccessfulToughQuestionSubmit={this.handleSuccessfulToughQuestionSubmit} handleSuccessfulToughQuestionDelete={this.handleSuccessfulToughQuestionDelete}/>
+                        <ToughQuestionForm handleSuccessfulToughQuestionSubmit={this.handleSuccessfulToughQuestionSubmit}
+                        handleSuccessfulToughQuestionDelete={this.handleSuccessfulToughQuestionDelete}/>
                     ) : ( 
                         <div className= "tough-question-add-button">
                             <button onClick={this.handleShowToughQuestionForm}>+</button>
