@@ -58,28 +58,23 @@ def hello():
     return "InnerView Back-end"
 
 
-@app.route("/tough_question", methods=["POST"])
-def add_tough_question():
-    post_data = request.get_json()
-    question = post_data.get('question')
-    answer = post_data.get('answer')
-    new_tough_question = ToughQuestion(question, answer)
-
-    db.session.add(new_tough_question)
-    db.session.commit()
-
-    # question = ToughQuestion.query.get(new_question.id)
-
-
-    return jsonify(toughQuestion_schema.dump(new_tough_question))
-    
-
 @app.route("/tough_questions", methods=["GET"])
 def get_question():
     all_questions = ToughQuestion.query.all()
     print(all_questions)
     return jsonify(toughQuestions_schema.dump(all_questions))
 
+
+@app.route("/tough_question", methods=["POST"])
+def add_tough_question():
+    post_data = request.get_json()
+    question = post_data.get('question')
+    answer = post_data.get('answer')
+    new_tough_question = ToughQuestion(question, answer)
+    db.session.add(new_tough_question)
+    db.session.commit()
+    return jsonify(toughQuestion_schema.dump(new_tough_question))
+    
 
 @app.route("/delete_tough_question/<id>", methods=["DELETE"])
 def delete_question(id):
