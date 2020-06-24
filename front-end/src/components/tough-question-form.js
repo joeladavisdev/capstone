@@ -58,7 +58,6 @@ class ToughQuestionForm extends Component {
                     />
                     <div>
                         <button type='submit'>Submit</button>
-                        <button type='delete'>Delete</button>
                     </div>
                     
                 </form>
