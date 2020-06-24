@@ -81,7 +81,6 @@ def get_question():
     return jsonify(toughQuestions_schema.dump(all_questions))
 
 
-# *****NOT WORKING******
 @app.route("/delete_tough_question/<id>", methods=["DELETE"])
 def delete_question(id):
     question = ToughQuestion.query.get(id)
