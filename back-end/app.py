@@ -82,14 +82,12 @@ def get_question():
 
 
 # *****NOT WORKING******
-# @app.route("/tough_question", methods=["DELETE"])
-# def delete_question():
-#     question = ToughQuestion.query.get(new_question.id)
-
-#     db.session.delete(new_question)
-#     db.session.commit()
-
-#     return toughQuestion_schema.jsonify(question)
+@app.route("/delete_tough_question/<id>", methods=["DELETE"])
+def delete_question(id):
+    question = ToughQuestion.query.get(id)
+    db.session.delete(question)
+    db.session.commit()
+    return jsonify("question deleted")
 
 
 
