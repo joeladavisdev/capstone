@@ -74,7 +74,21 @@ def add_tough_question():
     db.session.add(new_tough_question)
     db.session.commit()
     return jsonify(toughQuestion_schema.dump(new_tough_question))
+
+# experiment#####
+
+@app.route("/edit_tough_question/57", methods=["PATCH"])
+def edit_tough_question(id):
+    patch_data = request.patch_json()
+    question = patch_data.get('question')
+    answer = patch_data.get('answer')
+    new_tough_question = ToughQuestion(question, answer)
+    db.session.add(new_tough_question)
+    db.session.commit()
+    return jsonify(toughQuestion_schema.dump(new_tough_question))
     
+# experiment####
+
 
 @app.route("/delete_tough_question/<id>", methods=["DELETE"])
 def delete_question(id):
